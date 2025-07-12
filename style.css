@@ -1,124 +1,155 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
+  color: #111;
   scroll-behavior: smooth;
 }
 
-/* Sidebar fixed */
+/* Dark Mode Toggle */
+.toggle-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 6px 12px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* ========== SIDEBAR NAVIGATION ========== */
 .sidebar {
   position: fixed;
-  top: 0;
   left: 0;
-  width: 200px;
+  top: 0;
+  width: 220px;
   height: 100%;
   background-color: #111;
-  padding-top: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .sidebar a {
-  display: block;
   color: white;
-  padding: 15px 20px;
   text-decoration: none;
   font-weight: bold;
 }
 
 .sidebar a:hover {
-  background-color: #444;
+  color: #00ffff;
 }
 
-/* Main content beside sidebar */
+/* ========== MAIN CONTENT ========== */
 .main-content {
-  margin-left: 200px;
+  margin-left: 240px;
   padding: 20px;
 }
 
-/* Contact Section */
-#contact {
-  text-align: center;
-  padding-bottom: 40px;
-}
-
-.contact-text h2 {
-  margin-top: 20px;
-  font-size: 22px;
+h2 {
+  margin-top: 30px;
   color: #002244;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
 }
 
-.contact-text h3 {
-  margin-top: 10px;
-  color: black;
+ul {
+  margin-left: 20px;
+  line-height: 1.6;
 }
 
-.contact-text p {
-  margin-top: 10px;
-}
-
-.contact-photo img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  margin-top: 20px;
-  border: 2px solid #004080;
-}
-
-/* Section Titles */
-section h2 {
-  color: #002244;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #002244;
-  display: inline-block;
-}
-
-/* Table styles */
-.table-container table {
+table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
 
-.table-container th,
-.table-container td {
-  border: 1px solid #444;
-  padding: 10px;
+table, th, td {
+  border: 1px solid #888;
+  padding: 8px;
   text-align: center;
 }
 
-.table-container th {
-  background-color: #ddd;
-}
-
-/* Skills */
-#skills ul {
-  margin-left: 20px;
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 10px;
 }
 
-#skills li {
-  margin-bottom: 5px;
+.contact-text {
+  flex: 1 1 300px;
 }
 
-/* Responsive fix for mobile */
+.contact-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 10px;
+}
+
+/* ========== DARK MODE ========== */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.dark-mode .sidebar {
+  background-color: #222;
+}
+
+body.dark-mode .sidebar a {
+  color: #ddd;
+}
+
+body.dark-mode h2 {
+  color: #80dfff;
+}
+
+body.dark-mode table, 
+body.dark-mode th, 
+body.dark-mode td {
+  border: 1px solid #666;
+}
+
+/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
   .sidebar {
     position: relative;
     width: 100%;
     height: auto;
     flex-direction: row;
-    display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .sidebar a {
+    margin: 5px 10px;
   }
 
   .main-content {
     margin-left: 0;
-    padding: 20px;
+    padding: 15px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-text {
+    text-align: center;
   }
 
   .contact-photo img {
@@ -126,29 +157,7 @@ section h2 {
     height: 120px;
   }
 
-}
-.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-.dark-mode a {
-  color: #90caf9;
-}
-
-.dark-mode table, .dark-mode th, .dark-mode td {
-  border-color: white;
-}
-.toggle-btn {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  padding: 10px 14px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 9999; /* Make sure it stays above all */
-  font-size: 14px;
+  table {
+    font-size: 14px;
+  }
 }
